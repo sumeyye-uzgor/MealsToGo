@@ -1,5 +1,6 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import React from "react";
+import { Searchbar } from "react-native-paper";
 import { Platform, StyleSheet, Text, View, StatusBar } from "react-native";
 import styled from "styled-components/native";
 const StyledView = styled.SafeAreaView`
@@ -7,7 +8,6 @@ const StyledView = styled.SafeAreaView`
   margin-top: ${Math.ceil(StatusBar.currentHeight)}px;
 `;
 const StyledSearchView = styled.View`
-  background-color: red;
   padding: 16px;
 `;
 const StyledContainer = styled.View`
@@ -20,7 +20,7 @@ export default function App() {
   return (
     <StyledView>
       <StyledSearchView>
-        <Text>Deneme</Text>
+        <Searchbar />
       </StyledSearchView>
       <StyledContainer>
         <Text>Deneeme2</Text>
