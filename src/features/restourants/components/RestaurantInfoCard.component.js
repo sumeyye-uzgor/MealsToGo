@@ -10,7 +10,7 @@ const StyledCardCover = styled(Card.Cover)`
 const StyledCardContent = styled(Card.Content)`
   padding: 16px;
 `;
-function RestourantInfoCard({ restaurant = {} }) {
+function RestaurantInfoCard({ restaurant = {} }) {
   const {
     name = "Some Restaurant",
     icon,
@@ -23,7 +23,7 @@ function RestourantInfoCard({ restaurant = {} }) {
     isClosedTemporarily,
   } = restaurant;
   return (
-    <Card>
+    <Card elevation={6}>
       <StyledCardCover source={{ uri: photos[0] }} />
       <StyledCardContent>
         <Title>{name}</Title>
@@ -33,4 +33,4 @@ function RestourantInfoCard({ restaurant = {} }) {
   );
 }
 
-export default RestourantInfoCard;
+export default RestaurantInfoCard;

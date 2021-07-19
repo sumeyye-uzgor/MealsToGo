@@ -1,11 +1,11 @@
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import React from "react";
-import RestourantsScreen from "./src/features/restourants/screens/Restourants.screen";
+import RestaurantsScreen from "./src/features/restourants/screens/Restaurants.screen";
 
 export default function App() {
   return (
     <>
-      <RestourantsScreen />
+      <RestaurantsScreen />
       <ExpoStatusBar />
     </>
   );
