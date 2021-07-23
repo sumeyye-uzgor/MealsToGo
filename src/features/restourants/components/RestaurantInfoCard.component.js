@@ -5,6 +5,7 @@ import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
+import Spacer from "../../../components/Spacer.component";
 
 const StyledCardCover = styled(Card.Cover)`
   padding: ${({ theme }) => theme.space[3]};
@@ -65,10 +66,12 @@ function RestaurantInfoCard({ restaurant = {} }) {
                 CLOSED TEMPORARILY
               </Text>
             )}
-            <View style={{ paddingLeft: 16 }} />
-            <SvgXml xml={open} width={20} height={20} />
-            <View style={{ paddingLeft: 16 }} />
-            <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+            <Spacer position="left" size="large">
+              <SvgXml xml={open} width={20} height={20} />
+            </Spacer>
+            <Spacer position="left" size="large">
+              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+            </Spacer>
           </StyledIcons>
         </StyledAdditional>
 
