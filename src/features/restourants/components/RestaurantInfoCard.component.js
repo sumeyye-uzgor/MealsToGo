@@ -1,11 +1,12 @@
 import React from "react";
-import { View, Image, Text } from "react-native";
-import { Card, Title, Paragraph } from "react-native-paper";
+import { View, Image } from "react-native";
+import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-import Spacer from "../../../components/Spacer.component";
+import Spacer from "../../../components/space/Spacer.component";
+import StyledText from "../../../components/typography/StyledText.component";
 
 const StyledCardCover = styled(Card.Cover)`
   padding: ${({ theme }) => theme.space[3]};
@@ -14,11 +15,7 @@ const StyledCardCover = styled(Card.Cover)`
 const StyledInfo = styled(Card.Content)`
   padding: ${({ theme }) => theme.space[3]};
 `;
-const StyledTitle = styled(Title)`
-  font-family: ${({ theme }) => theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.body};
-  color: ${(props) => props.theme.colors.ui.primary};
-`;
+
 const StyledRating = styled(View)`
   flex-direction: row;
 `;
@@ -28,12 +25,13 @@ const StyledAdditional = styled(View)`
   padding-top: ${(props) => props.theme.space[2]};
   padding-bottom: ${(props) => props.theme.space[2]};
 `;
-const StyledParagraph = styled(Paragraph)`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
-`;
+
 const StyledIcons = styled(View)`
   flex-direction: row;
+`;
+const Icon = styled(Image)`
+  width: 15px;
+  height: 15px;
 `;
 function RestaurantInfoCard({ restaurant = {} }) {
   const {
@@ -52,7 +50,7 @@ function RestaurantInfoCard({ restaurant = {} }) {
     <Card elevation={6}>
       <StyledCardCover source={{ uri: photos[0] }} />
       <StyledInfo>
-        <StyledTitle>{name}</StyledTitle>
+        <StyledText variant="label">{name}</StyledText>
         <StyledAdditional>
           <StyledRating>
             {ratingArray.map((a, i) => (
@@ -62,20 +60,20 @@ function RestaurantInfoCard({ restaurant = {} }) {
 
           <StyledIcons>
             {isClosedTemporarily && (
-              <Text variant="label" style={{ color: "red" }}>
-                CLOSED TEMPORARILY
-              </Text>
+              <StyledText variant="error">CLOSED TEMPORARILY</StyledText>
+            )}
+            {isOpenNow && (
+              <Spacer position="left" size="large">
+                <SvgXml xml={open} width={20} height={20} />
+              </Spacer>
             )}
             <Spacer position="left" size="large">
-              <SvgXml xml={open} width={20} height={20} />
-            </Spacer>
-            <Spacer position="left" size="large">
-              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+              <Icon source={{ uri: icon }} />
             </Spacer>
           </StyledIcons>
         </StyledAdditional>
 
-        <StyledParagraph>{address}</StyledParagraph>
+        <StyledText variant="caption">{address}</StyledText>
       </StyledInfo>
     </Card>
   );
