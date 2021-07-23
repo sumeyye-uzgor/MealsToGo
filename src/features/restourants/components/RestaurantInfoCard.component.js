@@ -1,38 +1,19 @@
 import React from "react";
-import { View, Image } from "react-native";
 import { Card } from "react-native-paper";
-import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 import Spacer from "../../../components/space/Spacer.component";
 import StyledText from "../../../components/typography/StyledText.component";
+import {
+  StyledCardCover,
+  StyledRating,
+  StyledAdditional,
+  StyledIconContainer,
+  StyledIcon,
+  StyledInfo,
+} from "./RestaurantInfoCard.styles";
 
-const StyledCardCover = styled(Card.Cover)`
-  padding: ${({ theme }) => theme.space[3]};
-  background-color: ${({ theme }) => theme.colors.bg.primary};
-`;
-const StyledInfo = styled(Card.Content)`
-  padding: ${({ theme }) => theme.space[3]};
-`;
-
-const StyledRating = styled(View)`
-  flex-direction: row;
-`;
-const StyledAdditional = styled(View)`
-  flex-direction: row;
-  justify-content: space-between;
-  padding-top: ${(props) => props.theme.space[2]};
-  padding-bottom: ${(props) => props.theme.space[2]};
-`;
-
-const StyledIcons = styled(View)`
-  flex-direction: row;
-`;
-const Icon = styled(Image)`
-  width: 15px;
-  height: 15px;
-`;
 function RestaurantInfoCard({ restaurant = {} }) {
   const {
     name = "Some Restaurant",
@@ -58,7 +39,7 @@ function RestaurantInfoCard({ restaurant = {} }) {
             ))}
           </StyledRating>
 
-          <StyledIcons>
+          <StyledIconContainer>
             {isClosedTemporarily && (
               <StyledText variant="error">CLOSED TEMPORARILY</StyledText>
             )}
@@ -68,9 +49,9 @@ function RestaurantInfoCard({ restaurant = {} }) {
               </Spacer>
             )}
             <Spacer position="left" size="large">
-              <Icon source={{ uri: icon }} />
+              <StyledIcon source={{ uri: icon }} />
             </Spacer>
-          </StyledIcons>
+          </StyledIconContainer>
         </StyledAdditional>
 
         <StyledText variant="caption">{address}</StyledText>
