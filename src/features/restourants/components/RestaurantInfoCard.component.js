@@ -10,6 +10,15 @@ const StyledCardCover = styled(Card.Cover)`
 const StyledCardContent = styled(Card.Content)`
   padding: ${({ theme }) => theme.space[3]};
 `;
+const StyledTitle = styled(Title)`
+  font-family: ${({ theme }) => theme.fonts.heading};
+  font-size: ${(props) => props.theme.fontSizes.body};
+  color: ${(props) => props.theme.colors.ui.primary};
+`;
+const StyledParagraph = styled(Paragraph)`
+  font-family: ${(props) => props.theme.fonts.body};
+  font-size: ${(props) => props.theme.fontSizes.caption};
+`;
 function RestaurantInfoCard({ restaurant = {} }) {
   const {
     name = "Some Restaurant",
@@ -26,8 +35,8 @@ function RestaurantInfoCard({ restaurant = {} }) {
     <Card elevation={6}>
       <StyledCardCover source={{ uri: photos[0] }} />
       <StyledCardContent>
-        <Title>{name}</Title>
-        <Paragraph>{address}</Paragraph>
+        <StyledTitle>{name}</StyledTitle>
+        <StyledParagraph>{address}</StyledParagraph>
       </StyledCardContent>
     </Card>
   );
